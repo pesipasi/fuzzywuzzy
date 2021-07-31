@@ -55,6 +55,7 @@ def partial_ratio(s1, s2):
     scores = []
     max_block = []
     s_loc = []
+    e_loc = []
     for block in blocks:
         long_start = block[1] - block[0] if (block[1] - block[0]) > 0 else 0
         long_end = long_start + len(shorter)
@@ -68,8 +69,9 @@ def partial_ratio(s1, s2):
             scores.append(r)
             max_block.append(long_substr)
             s_loc.append(long_start)
+            e_loc.append(long_end)
     index = scores.index(max(scores))
-    return utils.intr(100 * max(scores)), max_block[index], s_loc[index], s_loc[index]+len(shorter)
+    return utils.intr(100 * max(scores)), max_block[index], s_loc[index], e_loc[index]
 
 
 ##############################
