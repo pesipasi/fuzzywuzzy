@@ -63,13 +63,14 @@ def partial_ratio(s1, s2):
 
         m2 = SequenceMatcher(None, shorter, long_substr)
         r = m2.ratio()
+        end_loc = long_start + len(long_substr)
         if r > .995:
-            return 100, long_substr, long_start, long_end
+            return 100, long_substr, long_start, end_loc
         else:
             scores.append(r)
             max_block.append(long_substr)
             s_loc.append(long_start)
-            e_loc.append(long_end)
+            e_loc.append(end_loc)
     index = scores.index(max(scores))
     return utils.intr(100 * max(scores)), max_block[index], s_loc[index], e_loc[index]
 
