@@ -63,7 +63,7 @@ def partial_ratio(s1, s2):
 
         m2 = SequenceMatcher(None, shorter, long_substr)
         r = m2.ratio()
-        end_loc = long_start + len(long_substr)
+        end_loc = long_start + len(long_substr) - 1
         if r > .995:
             return 100, long_substr, long_start, end_loc
         else:
